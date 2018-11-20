@@ -8,7 +8,7 @@ import React from 'react';
 //     <h1>Hello, {name}</h1>
 // );
 
-class Welcome extends React.Component {
+class Welcome extends React.PureComponent {
     render() {
         const {children} = this.props;
 
