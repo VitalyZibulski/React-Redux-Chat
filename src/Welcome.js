@@ -10,9 +10,9 @@ import React from 'react';
 
 class Welcome extends React.Component {
     render() {
-        const {name} = this.props;
+        const {children} = this.props;
 
-        return <h1>Hello, {name}</h1>;
+        return <h1>Hello, {children}</h1>;
     }
 }
 

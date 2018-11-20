@@ -21,7 +21,7 @@ class App extends Component {
             Learn React
           </a>
             <hr/>
-          <Welcome name="World" />
+            <Welcome>World</Welcome>
         </header>
       </div>
     );
