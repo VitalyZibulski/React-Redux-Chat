@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
-import Welcome from './Welcome'
+import Welcome from './Welcome';
+import List from './List';
 
 class App extends Component {
   render() {
@@ -22,6 +23,7 @@ class App extends Component {
           </a>
             <hr/>
             <Welcome>World</Welcome>
+            <List />
         </header>
       </div>
     );
