@@ -1,22 +1,12 @@
 import React from 'react';
 import classnames from 'classnames';
 import { withStyles } from 'material-ui/styles';
-import Drawer from 'material-ui/Drawer';
-import AppBar from 'material-ui/AppBar';
-import Toolbar from 'material-ui/Toolbar';
 import Typography from 'material-ui/Typography';
-import Divider from 'material-ui/Divider';
-import TextField from 'material-ui/TextField';
-import List, { ListItem, ListItemText } from 'material-ui/List';
 import Avatar from 'material-ui/Avatar';
-import Button from 'material-ui/Button';
-import BottomNavigation, { BottomNavigationAction } from 'material-ui/BottomNavigation';
 import Paper from 'material-ui/Paper';
 import Input from 'material-ui/Input';
-
-import RestoreIcon from '@material-ui/icons/Restore';
-import ExploreIcon from '@material-ui/icons/Explore';
-import AddIcon from '@material-ui/icons/Add';
+import Sidebar from './components/Sidebar';
+import ChatHeader from './components/ChatHeader';
 
 import titleInitials from './utils/title-initials';
 
@@ -29,24 +19,6 @@ const styles = theme => ({
         width: '100%',
         height: '100%',
         backgroundColor: theme.palette.background.default,
-    },
-    appBar: {
-        position: 'fixed',
-        width: `calc(100% - 320px)`,
-    },
-    drawerPaper: {
-        position: 'relative',
-        height: '100%',
-        width: 320,
-    },
-    drawerHeader: {
-        ...theme.mixins.toolbar,
-        paddingLeft: theme.spacing.unit * 3,
-        paddingRight: theme.spacing.unit * 3,
-    },
-    chatsList: {
-        height: 'calc(100% - 56px)',
-        overflowY: 'scroll',
     },
     newChatButton: {
         position: 'absolute',
@@ -123,47 +95,11 @@ class App extends React.Component {
 
         return (
             <div className={classes.root}>
-                <AppBar color="primary" className={classes.appBar}>
-                    <Toolbar>
-                        <Typography variant="title" color="inherit" noWrap>
-                            React Chat
-                        </Typography>
-                    </Toolbar>
-                </AppBar>
-                <Drawer
-                    variant="permanent"
-                    classes={{
-                        paper: classes.drawerPaper,
-                    }}
-                >
-                    <div className={classes.drawerHeader}>
-                        <TextField
-                            fullWidth
-                            margin="normal"
-                            placeholder="Search chats..."
-                        />
-                    </div>
-                    <Divider />
-                    <List className={classes.chatsList}>
-                        {chats.map((chat, index) => (
-                            <ListItem key={index} button>
-                                <Avatar>{titleInitials(chat.title)}</Avatar>
-                                <ListItemText primary={chat.title}/>
-                            </ListItem>
-                        ))}
-                    </List>
-                    <Button
-                        variant="fab"
-                        color="primary"
-                        className={classes.newChatButton}
-                    >
-                        <AddIcon />
-                    </Button>
-                    <BottomNavigation showLabels>
-                        <BottomNavigationAction label="My Chats" icon={<RestoreIcon />} />
-                        <BottomNavigationAction label="Explore" icon={<ExploreIcon />} />
-                    </BottomNavigation>
-                </Drawer>
+
+
+                <Sidebar chats={ chats } />
+                <ChatHeader />
+
                 <main className={classes.chatLayout}>
                     <div className={classes.messagesWrapper} ref="messagesWrapper">
                         {messages && messages.map((message, index) => {
