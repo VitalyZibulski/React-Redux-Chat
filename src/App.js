@@ -1,4 +1,5 @@
 import React from 'react';
+import classnames from 'classnames';
 import { withStyles } from 'material-ui/styles';
 import Drawer from 'material-ui/Drawer';
 import AppBar from 'material-ui/AppBar';
@@ -156,16 +157,14 @@ class App extends React.Component {
                             );
 
                             return (
-                                // <div className={classNames(classes.messageWrapper, isMessageFromMe && classes.messageWrappperFromMe)}>
-                                <div key={index} className={[
+                                <div key={index} className={classnames(
                                     classes.messageWrapper,
-                                    isMessageFromMe ? classes.messageWrappperFromMe : ''
-                                ].join(' ')}>
-                                    {!isMessageFromMe && userAvatar}
-                                    <Paper className={[
+                                    isMessageFromMe && classes.messageWrappperFromMe
+                                )}>
+                                    <Paper className={classnames(
                                         classes.message,
-                                        isMessageFromMe ? classes.messageFromMe : ''
-                                    ].join(' ')}>
+                                        isMessageFromMe && classes.messageFromMe
+                                    )}>
                                         <Typography variant="caption">
                                             {message.sender}
                                         </Typography>
