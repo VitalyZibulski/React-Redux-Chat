@@ -18,7 +18,10 @@ import RestoreIcon from '@material-ui/icons/Restore';
 import ExploreIcon from '@material-ui/icons/Explore';
 import AddIcon from '@material-ui/icons/Add';
 
+import titleInitials from './utils/title-initials';
+
 import { chats, messages } from './mock-data';
+
 const styles = theme => ({
     root: {
         position: 'relative',
@@ -128,7 +131,7 @@ class App extends React.Component {
                     <List className={classes.chatsList}>
                         {chats.map((chat, index) => (
                             <ListItem key={index} button>
-                                <Avatar>{chat.title && chat.title[0]}</Avatar>
+                                <Avatar>{titleInitials(chat.title)}</Avatar>
                                 <ListItemText primary={chat.title}/>
                             </ListItem>
                         ))}
@@ -152,7 +155,7 @@ class App extends React.Component {
 
                             const userAvatar = (
                                 <Avatar>
-                                    {message.sender[0]}
+                                    {titleInitials(message.sender)}
                                 </Avatar>
                             );
 
